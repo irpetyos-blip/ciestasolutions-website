@@ -4,105 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>CIESTA. | Strategic solutions for growth</title>
-<style>
-:root{--bg:#fff;--ink:#000;--mut:#6B6B6B;--pan:#F2F2F2;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#000;--ink:#fff;--mut:#a8a8a8;--pan:#1a1a1a}}
-:root[data-theme="dark"]{--bg:#000;--ink:#fff;--mut:#a8a8a8;--pan:#1a1a1a}
-*,*::before,*::after{box-sizing:inherit}
-body{margin:0;background:var(--bg);color:var(--ink);font:400 15.5px/1.55 Arial,Helvetica,sans-serif}
-h1,h2,h3,h4{font-weight:700;letter-spacing:-.04em;line-height:1.08;margin:0}
-p{margin:0}a{color:inherit}
-:focus-visible{outline:3px solid var(--ink);outline-offset:3px}
-.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
-header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:var(--bg);border-bottom:1px solid var(--ink)}
-header .wrap{display:flex;align-items:center;justify-content:space-between;gap:16px;min-height:54px;flex-wrap:wrap;padding-top:8px;padding-bottom:8px}
-.logo{font-weight:700;font-size:21px;letter-spacing:-.05em;text-decoration:none}
-nav{display:flex;gap:22px;flex-wrap:wrap;align-items:center}
-nav a{text-decoration:none;font-size:14px;color:var(--mut)}
-nav a:hover,nav a[aria-current="page"]{color:var(--ink)}
-nav a[aria-current="page"]{border-bottom:2px solid var(--ink)}
-nav a.btn{color:var(--bg);border-bottom:2px solid var(--ink);padding:8px 14px}
-nav a.btn:hover{color:var(--ink)}
-.page{display:none}
-.page.on{display:block}
-.blk{padding:52px 0;border-bottom:1px solid var(--ink)}
-.lab{display:block;font-size:11.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--mut);margin-bottom:14px}
-h1.pt{font-size:clamp(28px,4.2vw,44px)}
-h2.st{font-size:clamp(24px,3.4vw,38px)}
-.hero{padding:84px 0 76px}.hero h1{font-size:clamp(34px,6vw,64px);letter-spacing:-.05em;max-width:13em}.hero .u{font-size:clamp(34px,6vw,64px);font-weight:700;letter-spacing:-.05em;color:var(--mut);margin-top:6px;max-width:13em;line-height:1.08}
-.title h1{font-size:clamp(64px,16vw,170px);letter-spacing:-.06em;line-height:1}
-.title .t{font-size:clamp(18px,2.4vw,24px);margin-top:36px}
-.title .s{color:var(--mut);font-size:15px;margin-top:12px}
-.statement{background:var(--pan)}
-.statement h2{font-size:clamp(34px,6vw,72px);max-width:12em}
-.statement .u{font-size:clamp(34px,6vw,72px);font-weight:700;letter-spacing:-.045em;color:var(--mut);margin-top:12px;max-width:12em;line-height:1.08}
-.toc{list-style:none;margin:0;padding:0;border-top:1px solid var(--ink)}
-.toc a{display:grid;grid-template-columns:50px 1fr 1.3fr 30px;gap:16px;align-items:center;padding:20px 0;border-bottom:1px solid var(--ink);text-decoration:none}
-.toc a:hover{background:var(--pan)}
-.toc .n{color:var(--mut)}
-.toc .h{font-size:clamp(24px,3.2vw,32px);font-weight:700;letter-spacing:-.045em}
-.toc .d{color:var(--mut)}
-.toc .ar{text-align:right;font-size:20px}
-.two{display:grid;grid-template-columns:1fr 1fr;gap:44px;margin-top:28px;align-items:start}
-.acro{border-top:1px solid var(--ink)}
-.acro div{display:flex;gap:28px;align-items:baseline;padding:9px 0;border-bottom:1px solid var(--ink);font-size:14.5px}
-.acro b{font-size:18px;width:20px}
-.intro p{font-size:14.5px;max-width:30em}
-.intro .c{font-weight:700;margin-top:18px;font-size:16px}
-.g3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:24px}
-.box{border:1px solid var(--ink);padding:18px 18px 20px}
-.box .no{font-size:26px;font-weight:700;letter-spacing:-.04em;display:block;margin-bottom:12px}
-.box h3{font-size:16px;margin-bottom:6px;letter-spacing:-.02em}
-.box p{font-size:13.5px}
-.box.g{background:var(--pan);border-color:var(--pan)}
-.box.g .k{display:block;color:var(--mut);font-size:13px;margin:4px 0 10px}
-.sectors{margin-top:22px;color:var(--mut);font-size:12.5px}
-.g3.m{grid-template-columns:repeat(3,1fr)}
-.box .hd{display:flex;gap:12px;align-items:baseline;margin-bottom:10px}
-.box .hd b{font-size:22px;letter-spacing:-.03em}
-.box .hd h3{margin:0;font-size:15px}
-.g4{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px}
-.g4>div{border-top:1px solid var(--ink);padding-top:12px}
-.g4 .no{font-size:24px;font-weight:700;letter-spacing:-.04em;display:block;margin-bottom:8px}
-.g4 h3{font-size:16px;margin-bottom:5px;letter-spacing:-.02em}
-.g4 p{font-size:13.5px;color:var(--mut)}
-.note{margin-top:22px;font-size:12px;color:var(--mut)}
-.svc{display:grid;grid-template-columns:1fr 1fr;column-gap:44px;margin-top:24px;border-top:1px solid var(--ink)}
-.svc div{display:flex;gap:14px;padding:11px 0;border-bottom:1px solid var(--ink)}
-.svc .n{font-size:12px;color:var(--mut);padding-top:3px;width:20px}
-.svc b{display:block;font-size:14.5px}
-.svc span{color:var(--mut);font-size:12.5px}
-.step{font-size:15px;font-weight:700;letter-spacing:-.02em;margin:26px 0 0}
-.step+.g3{margin-top:12px}
-.depth .box{padding:16px 18px}
-.depth .box .k{display:block;margin-top:14px;font-size:13px;font-weight:700;color:var(--mut)}
-.pend{max-width:700px}
-.pend p{color:var(--mut);margin-top:12px;font-size:14.5px;max-width:36em}
-.ct p.l{font-size:16px;margin:16px 0 18px}
-.ct .d{display:grid;gap:2px;font-size:14px}
-.btn{display:inline-block;padding:11px 18px;background:var(--ink);color:var(--bg);font-weight:700;font-size:14px;text-decoration:none;border:2px solid var(--ink)}
-.btn:hover{background:var(--bg);color:var(--ink)}
-.crow{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-top:22px}
-.crow strong{font-size:17px;letter-spacing:-.02em}
-.next{margin-top:24px;background:var(--pan);padding:16px 18px;display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap}
-.next h3{font-size:15px;letter-spacing:-.02em}
-.next p{font-size:12.5px;color:var(--mut);margin-top:4px}
-footer{padding:18px 0 24px;font-size:12.5px;color:var(--mut)}
-@media (max-width:820px){
-.toc a{grid-template-columns:36px 1fr 24px;gap:10px}.toc .d{grid-column:2/3;grid-row:2}.toc .ar{grid-row:1/3;grid-column:3}
-.two,.g3,.g3.m,.g4,.svc{grid-template-columns:1fr}.two{gap:36px}.blk{padding:40px 0}.hero{padding:56px 0 48px}}
-
-[data-edit-ui]{font-family:Arial,Helvetica,sans-serif}
-#ebar{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:50;background:var(--ink);color:var(--bg);padding:10px 12px;display:flex;gap:8px;align-items:center;flex-wrap:wrap;max-width:calc(100% - 32px);font-size:13px}
-#ebar button{font:700 13px Arial,sans-serif;padding:8px 12px;border:2px solid var(--bg);background:var(--bg);color:var(--ink);cursor:pointer;border-radius:0}
-#ebar button.o{background:transparent;color:var(--bg)}
-#ebar input{font:13px Arial,sans-serif;padding:7px 8px;border:1px solid var(--bg);background:var(--bg);color:var(--ink);width:210px;border-radius:0}
-#ebar .f{display:none;gap:8px;align-items:center;flex-wrap:wrap}
-body.editing #ebar .f{display:flex}
-body.editing #ebar #eon{display:none}
-body.editing [contenteditable]{outline:1px dashed var(--mut);outline-offset:2px;cursor:text}
-body.editing [contenteditable]:focus{outline:2px solid var(--ink)}
-</style>
+<link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 <header><div class="wrap">
@@ -246,23 +148,7 @@ body.editing [contenteditable]:focus{outline:2px solid var(--ink)}
 
 <footer><div class="wrap">© 2026 CIESTA. All rights reserved. Original work of CIESTA.; sharing and reproduction by written permission.</div></footer>
 
-<script id="app">
-(function(){
-var routes={"":"home","about":"about","method":"method","services":"services","insights":"insights","contact":"contact"};
-function show(){
-  var k=(location.hash||"").replace(/^#\/?/,";
-  var id=routes.hasOwnProperty(k)?routes[k]:"home";
-  document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id==="p-"+id)});
-  document.querySelectorAll("nav a").forEach(function(a){
-    if(a.getAttribute("href")==="#/"+id)a.setAttribute("aria-current","page");else a.removeAttribute("aria-current");
-  });
-  document.title=document.getElementById("p-"+id).dataset.title;
-  window.scrollTo(0,0);
-}
-window.addEventListener("hashchange",show);
-show();
-})();
-</script>
+<script src="assets/js/app.js"></script>
 
 <script id="edit-app" data-edit-ui-keep="">
 (async function(){
@@ -315,7 +201,8 @@ document.getElementById("esave").onclick=async function(){
     var e=cl.querySelector("#"+p[0]);if(!e||!p[1])return;
     e.setAttribute("href",p[1]);e.setAttribute("target","_blank");e.setAttribute("rel","noopener");e.removeAttribute("data-todo");
   });
-  try{await art.publish("<!DOCTYPE html>\n"+cl.outerHTML);}catch(err){stat.textContent=(err&&err.code==="conflict")?"Page changed elsewhere. Reload and try again.":"Could not publish: "+((err&&err.message)||"error");}
+  try{await art.publish("<!DOCTYPE html>\n"+cl.outerHTML);}
+  catch(err){stat.textContent=(err&&err.code==="conflict")?"Page changed elsewhere. Reload and try again.":"Could not publish: "+((err&&err.message)||"error");}
 };
 })();
 </script>
