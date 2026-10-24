@@ -186,9 +186,13 @@
 <span class="lab">Contact us</span>
 <h1 class="pt">Let’s talk</h1>
 <p class="l">Book a free discovery call and see your next step clearly.</p>
-<div class="d"><span>book@ciestasolutions.com</span><span>ciestasolutions.com</span><span>linkedin.com/company/ciesta.solutions</span></div>
+<div class="d">
+<a href="mailto:book@ciestasolutions.com">book@ciestasolutions.com</a>
+<span>ciestasolutions.com</span>
+<a href="https://www.linkedin.com/company/ciestasolutions" target="_blank" rel="noopener">linkedin.com/company/ciestasolutions</a>
+</div>
 <div class="crow"><a class="btn" id="calendly-link" href="https://calendly.com/book-ciestasolutions/30min" target="_blank" rel="noopener">Book a free discovery call</a><strong>See beyond the obvious.</strong></div>
-<div class="next"><div><h3>Next step — Pre-call questionnaire</h3><p>Download the intake form before your discovery call.</p></div><div class="next-links"><a class="btn" href="Pre-Call%20Business%20Survey.pdf" target="_blank" rel="noopener">Business survey</a><a class="btn" href="Pre-Call%20Questionnaire%20for%20New%20Businesses.pdf" target="_blank" rel="noopener">New business</a></div></div>
+<div class="next"><div><h3>Next step — Pre-call questionnaire</h3><p>Download the intake form before your discovery call.</p></div><div class="next-links"><a class="btn" id="questionnaire-link" href="https://github.com/irpetyos-blip/ciestasolutions-website/raw/main/Pre-Call%20Business%20Survey.pdf" target="_blank" rel="noopener" download>Business survey</a><a class="btn" href="https://github.com/irpetyos-blip/ciestasolutions-website/raw/main/Pre-Call%20Questionnaire%20for%20New%20Businesses.pdf" target="_blank" rel="noopener" download>New business</a></div></div>
 </div></section>
 </div>
 </main>
@@ -214,8 +218,8 @@ function isUrl(v){return /^https?:\/\//i.test(v)}
 document.getElementById("eon").onclick=function(){
   document.body.classList.add("editing");
   document.querySelectorAll(SEL).forEach(function(e){e.setAttribute("contenteditable","true");e.setAttribute("spellcheck","true")});
-  document.getElementById("ecal").value=isUrl(cal.getAttribute("href"))?cal.getAttribute("href"):"";
-  document.getElementById("eq").value=isUrl(q.getAttribute("href"))?q.getAttribute("href"):"";
+  if(cal){document.getElementById("ecal").value=isUrl(cal.getAttribute("href"))?cal.getAttribute("href"):"";}
+  if(q){document.getElementById("eq").value=isUrl(q.getAttribute("href"))?q.getAttribute("href"):"";}
   stat.textContent="Click any text to edit. Switch pages from the top menu.";
 };
 document.getElementById("ecancel").onclick=function(){location.reload()};
