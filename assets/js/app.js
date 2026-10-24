@@ -2,6 +2,8 @@
   var routes={"":"home","about":"about","method":"method","services":"services","insights":"insights","contact":"contact"};
   var THEME_KEY="ciesta-theme";
   var THEME_ORDER=["auto","light","dark"];
+  var pages = Array.prototype.slice.call(document.querySelectorAll(".page"));
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll("nav a"));
 
   function getSavedTheme(){
     try{
@@ -41,14 +43,30 @@
 
   function show(){
     var k=(location.hash||"").replace(/^#\/?/,"");
-    var id=routes.hasOwnProperty(k)?routes[k]:"home";
-    document.querySelectorAll(".page").forEach(function(p){p.classList.toggle("on",p.id==="p-"+id)});
-    document.querySelectorAll("nav a").forEach(function(a){
-      if(a.getAttribute("href")==="#/"+id) a.setAttribute("aria-current","page"); else a.removeAttribute("aria-current");
+    var id=Object.prototype.hasOwnProperty.call(routes,k)?routes[k]:"home";
+    var targetId="p-"+id;
+
+    pages.forEach(function(p){
+      p.classList.toggle("on", p.id === targetId);
     });
-    var el=document.getElementById("p-"+id);
+
+    navLinks.forEach(function(a){
+      var href=a.getAttribute("href");
+      if(href === "#/" + id){
+        a.setAttribute("aria-current","page");
+      }else if(a.hasAttribute("aria-current")){
+        a.removeAttribute("aria-current");
+      }
+    });
+
+    var el=document.getElementById(targetId);
     if(el&&el.dataset&&el.dataset.title) document.title=el.dataset.title;
-    window.scrollTo(0,0);
+
+    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+      window.scrollTo(0,0);
+    } else {
+      window.scrollTo({top:0,left:0,behavior:"auto"});
+    }
   }
 
   var button=document.getElementById("theme-toggle");
@@ -57,8 +75,12 @@
   applyTheme(getSavedTheme(), false);
   show();
 
-  window.addEventListener("hashchange", show);
-  setInterval(function(){
+  window.addEventListener("hashchange", function(){
+    requestAnimationFrame(show);
+  });
+
+  var timer = window.setInterval(function(){
     if(getSavedTheme()==="auto") applyTheme("auto", false);
   },600000);
+  window.__ciestaThemeTimer = timer;
 })();
