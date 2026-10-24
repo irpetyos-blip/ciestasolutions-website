@@ -1,15 +1,32 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark" style="color-scheme: dark;">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<script>
+(function(){
+  try{
+    var mode=localStorage.getItem("ciesta-theme");
+    if(mode!=="light"&&mode!=="dark"&&mode!=="auto") mode="auto";
+  }catch(e){
+    var mode="auto";
+  }
+  var now=new Date();
+  var theme = mode === "auto" ? (now.getHours()>=6&&now.getHours()<19?"light":"dark") : mode;
+  document.documentElement.setAttribute("data-theme", theme);
+  document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "light";
+}());
+</script>
 <title>CIESTA. | Strategic solutions for growth</title>
 <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 <header><div class="wrap">
 <a class="logo" href="#/">CIESTA.</a>
+<div class="tools">
+<button type="button" class="theme-toggle" id="theme-toggle" aria-label="Theme: Auto" data-theme-mode="auto">Auto</button>
 <nav aria-label="Main"><a href="#/about">About</a><a href="#/method">Method</a><a href="#/services">Services</a><a href="#/insights">Insights</a><a class="btn" href="#/contact">Contact us</a></nav>
+</div>
 </div></header>
 
 <main>
@@ -127,56 +144,10 @@
 
 <!-- INSIGHTS -->
 <div class="page" id="p-insights" data-title="Insights | CIESTA.">
-<section class="blk" style="border-bottom:1px solid var(--ink)"><div class="wrap article">
-<span class="lab">Insights</span>
-<p class="meta">Oct 24, 2026 · @CIESTA.</p>
-<h1 class="pt">6 Signs Your Business Depends Too Much on You (and Where to Start)</h1>
-<div class="article-body">
-<p class="lead">It’s your day off, and your phone buzzes with another “quick question” from the team. Being deeply involved in your business is often what got it started. Over time, though, growth needs a business that can move forward without your constant presence.</p>
-<p>How many of these six signs sound familiar?</p>
-<ol>
-<li>
-<h2>Every decision lands on your desk</h2>
-<p>If your team waits for your approval on small choices, work slows down. Clear guidelines on what each person can decide on their own speed up service and build confidence.</p>
-<p><strong>Try this:</strong> write a short list of decisions your team can make without asking, such as rescheduling a client or approving a refund up to a set amount.</p>
-</li>
-<li>
-<h2>Your days off aren’t really off</h2>
-<p>When time away means a phone full of messages, the business is holding your attention around the clock. A business that runs well in your absence is a sign of strong systems.</p>
-<p><strong>Try this:</strong> plan one day away each month and note every message that still reaches you. Each one points to a gap worth closing.</p>
-</li>
-<li>
-<h2>Your key knowledge isn’t written down</h2>
-<p>Pricing logic, client preferences and supplier details are valuable. Writing them down turns personal expertise into a company asset that your whole team can use.</p>
-<p><strong>Try this:</strong> start with one page per recurring topic, such as pricing, onboarding a new client or your main suppliers.</p>
-</li>
-<li>
-<h2>You still do tasks others could own</h2>
-<p>Invoicing, scheduling and routine replies often stay with the owner out of habit. Passing them to a teammate or a tool returns hours to the work that grows revenue.</p>
-<p><strong>Try this:</strong> hand off one routine task this month, along with a simple checklist.</p>
-</li>
-<li>
-<h2>Your hours set the ceiling for growth</h2>
-<p>If more clients would mean more hours from you, your capacity sets the ceiling. Repeatable processes and a capable team let revenue grow without stretching your week.</p>
-<p><strong>Try this:</strong> pick the service you deliver most often and ask which steps someone else could repeat with a clear process.</p>
-</li>
-<li>
-<h2>Long-term planning keeps slipping</h2>
-<p>When daily tasks fill the calendar, long-term thinking waits. A clear 3–5 year direction gives every day’s work a purpose and makes priorities easier to choose.</p>
-<p><strong>Try this:</strong> block 60 minutes at the same time each month for planning only, and protect it like a client meeting.</p>
-</li>
-</ol>
-<p>How many did you recognize?</p>
-<p>If you saw yourself in one or two, you have a solid base and a few targeted changes will help. If you recognized three or more, your business is ready for its next stage of independence.</p>
-<p><strong>A simple first step</strong></p>
-<p>Track your week for five days and mark every task only you did. Choose the one that takes the most time and ask: who, or what, could take this over with a clear checklist? That single change starts the shift.</p>
-<p>Then share the list with a trusted team member and pick one task to hand off this week.</p>
-<p>Your business shouldn’t need you every minute. At CIESTA, we help small businesses build strategy and systems that create freedom, stability and room to grow. <a href="#/contact">Get in touch</a> to see where your business can gain independence.</p>
-<div class="article-cta">
-<a class="btn" href="#/contact">Get in touch</a>
-<a class="related-link" href="#/services">Related service: Business Health Check</a>
-</div>
-</div>
+<section class="blk" style="border-bottom:1px solid var(--ink)"><div class="wrap pend">
+<span class="lab">Insights · Pending...</span>
+<h1 class="pt">Notes on running a business that runs itself</h1>
+<p>Short, practical writing on pricing, delegation, operations and growth for owners and leadership teams. New pieces are published here soon...</p>
 </div></section>
 </div>
 
