@@ -25,9 +25,7 @@
     }
 
     if (persist) {
-      try {
-        localStorage.setItem(THEME_KEY, theme);
-      } catch (e) {}
+      try { localStorage.setItem(THEME_KEY, theme); } catch (e) {}
     }
   }
 
