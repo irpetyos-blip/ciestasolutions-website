@@ -11,6 +11,7 @@
       try {
         saved = localStorage.getItem('ciesta-theme');
       } catch (e) {}
+
       var theme = saved === 'light' || saved === 'dark' ? saved : 'light';
       document.documentElement.setAttribute('data-theme', theme);
       document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
@@ -194,14 +195,12 @@
       <section class="blk">
         <div class="wrap">
           <h1 class="pt">Contact</h1>
-          <div class="ct">
-            <p class="l">Book a free discovery call and let’s explore what your business could look like with more clarity and less friction.</p>
-            <div class="d">
-              <a href="mailto:hello@ciestasolutions.com">hello@ciestasolutions.com</a>
-              <a href="https://calendly.com" target="_blank" rel="noreferrer">Book a call</a>
-              <a href="Pre-Call Business Survey.pdf" target="_blank" rel="noreferrer">Pre-Call Business Survey</a>
-              <a href="Pre-Call Questionnaire for New Businesses.pdf" target="_blank" rel="noreferrer">Pre-Call Questionnaire for New Businesses</a>
-            </div>
+          <p class="l">Book a free discovery call and see your next step clearly.</p>
+          <div class="d">
+            <a href="mailto:hello@ciestasolutions.com">hello@ciestasolutions.com</a>
+            <a href="https://calendly.com" target="_blank" rel="noreferrer">Book a call</a>
+            <a href="Pre-Call Business Survey.pdf" target="_blank" rel="noreferrer">Pre-Call Business Survey</a>
+            <a href="Pre-Call Questionnaire for New Businesses.pdf" target="_blank" rel="noreferrer">Pre-Call Questionnaire for New Businesses</a>
           </div>
         </div>
       </section>
