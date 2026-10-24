@@ -7,14 +7,16 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <script>
     (function () {
-      var saved = null;
       try {
-        saved = localStorage.getItem('ciesta-theme');
-      } catch (e) {}
-
-      var theme = saved === 'light' || saved === 'dark' ? saved : 'light';
-      document.documentElement.setAttribute('data-theme', theme);
-      document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+        var saved = localStorage.getItem('ciesta-theme');
+        if (saved !== 'light' && saved !== 'dark') saved = 'light';
+        var theme = saved;
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+      } catch (e) {
+        document.documentElement.setAttribute('data-theme', 'light');
+        document.documentElement.style.colorScheme = 'light';
+      }
     }());
   </script>
   <script src="assets/js/app.js" defer></script>
@@ -24,6 +26,7 @@
     <div class="wrap">
       <a class="logo" href="#/">CIESTA.</a>
       <div class="tools">
+        <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Theme: Light" data-theme-mode="light">Light</button>
         <nav aria-label="Main">
           <a href="#/about">About</a>
           <a href="#/method">Method</a>
@@ -206,7 +209,5 @@
       </section>
     </div>
   </main>
-
-  <button type="button" class="theme-toggle floating" id="theme-toggle" aria-label="Theme: Light" data-theme-mode="light">Light</button>
 </body>
 </html>
