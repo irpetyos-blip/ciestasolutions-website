@@ -17,7 +17,7 @@
   }
 
   function applyTheme(mode, persist){
-    var theme = mode === "auto" ? getSystemTheme() : mode;
+    var theme = mode === "dark" || mode === "light" ? mode : getSystemTheme();
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "light";
 
@@ -42,26 +42,30 @@
   }
 
   function show(){
+    var pages=document.querySelectorAll(".page");
+    var navLinks=document.querySelectorAll("nav a");
     var k=(location.hash||"").replace(/^#\/?/,"");
     var id=Object.prototype.hasOwnProperty.call(routes,k)?routes[k]:"home";
     var targetId="p-"+id;
 
-    document.querySelectorAll(".page").forEach(function(p){
+    pages.forEach(function(p){
       p.classList.toggle("on", p.id === targetId);
     });
 
-    document.querySelectorAll("nav a").forEach(function(a){
+    navLinks.forEach(function(a){
       var href=a.getAttribute("href");
       if(href === "#/" + id){
         a.setAttribute("aria-current","page");
-      } else if(a.hasAttribute("aria-current")) {
+      }else if(a.hasAttribute("aria-current")){
         a.removeAttribute("aria-current");
       }
     });
 
     var el=document.getElementById(targetId);
     if(el&&el.dataset&&el.dataset.title) document.title=el.dataset.title;
-    window.scrollTo({top:0,left:0,behavior:"auto"});
+    if(window.scrollY !== 0){
+      window.scrollTo({top:0,left:0,behavior:"auto"});
+    }
   }
 
   function init(){
@@ -74,12 +78,6 @@
     window.addEventListener("hashchange", function(){
       requestAnimationFrame(show);
     });
-
-    window.setInterval(function(){
-      if(getSavedTheme() === "dark" || getSavedTheme() === "light"){
-        applyTheme(getSavedTheme(), false);
-      }
-    },600000);
   }
 
   if(document.readyState === "loading"){
