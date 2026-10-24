@@ -1,86 +1,115 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<script>
-(function(){
-  try{
-    var mode=localStorage.getItem("ciesta-theme");
-    if(mode!=="light"&&mode!=="dark"&&mode!=="auto") mode="auto";
-  }catch(e){
-    var mode="auto";
-  }
-  var now=new Date();
-  var theme = mode === "auto" ? (now.getHours()>=6&&now.getHours()<19?"light":"dark") : mode;
-  document.documentElement.setAttribute("data-theme", theme);
-  document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "light";
-}());
-</script>
-<title>CIESTA. | Strategic solutions for growth</title>
-<link rel="stylesheet" href="assets/css/styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CIESTA. | Strategic solutions for growth</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <script>
+    (function () {
+      var saved = null;
+      try {
+        saved = localStorage.getItem('ciesta-theme');
+      } catch (e) {}
+      var theme = saved === 'light' || saved === 'dark' ? saved : 'light';
+      document.documentElement.setAttribute('data-theme', theme);
+      document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+    }());
+  </script>
+  <script src="assets/js/app.js" defer></script>
 </head>
 <body>
-<header><div class="wrap">
-<a class="logo" href="#/">CIESTA.</a>
-<div class="tools">
-<nav aria-label="Main"><a href="#/about">About</a><a href="#/method">Method</a><a href="#/services">Services</a><a href="#/insights">Insights</a><a class="btn" href="#/contact">Contact us</a></nav>
-</div>
-</div></header>
+  <header>
+    <div class="wrap">
+      <a class="logo" href="#/">CIESTA.</a>
+      <div class="tools">
+        <nav aria-label="Main">
+          <a href="#/about">About</a>
+          <a href="#/method">Method</a>
+          <a href="#/services">Services</a>
+          <a href="#/insights">Insights</a>
+          <a class="btn" href="#/contact">Contact us</a>
+        </nav>
+      </div>
+    </div>
+  </header>
 
-<main>
-<div class="page on" id="p-home" data-title="CIESTA. | Strategic solutions for growth">
-<section class="blk hero"><div class="wrap">
-<h1>Strategic solutions for growth.</h1>
-<p class="u">Time back for the people you love.</p>
-</div></section>
-<section class="blk" style="border-bottom:0"><div class="wrap">
-<span class="lab">Contents</span>
-<ul class="toc">
-<li><a href="#/about"><span class="n">01</span><span class="h">About</span><span class="d">What we stand for, our promise and who we help</span><span class="ar">→</span></a></li>
-<li><a href="#/method"><span class="n">02</span><span class="h">Method</span><span class="d">The CIESTA method and how an engagement runs</span><span class="ar">→</span></a></li>
-<li><a href="#/services"><span class="n">03</span><span class="h">Services</span><span class="d">What we deliver and how your price is shaped</span><span class="ar">→</span></a></li>
-<li><a href="#/insights"><span class="n">04</span><span class="h">Insights</span><span class="d">Practical writing for owners and operators</span><span class="ar">→</span></a></li>
-</ul>
-</div></section>
-</div>
+  <main>
+    <div class="page on" id="p-home" data-title="CIESTA. | Strategic solutions for growth">
+      <section class="blk hero">
+        <div class="wrap">
+          <h1>Strategic solutions for growth.</h1>
+          <p class="u">Time back for the people you love.</p>
+        </div>
+      </section>
 
-<div class="page" id="p-about" data-title="About | CIESTA.">
-<section class="blk"><div class="wrap">
-<h2 class="st">About</h2>
-<p class="intro">We help founders and operators create more clarity, momentum and strategic focus.</p>
-</div></section>
-</div>
+      <section class="blk" style="border-bottom:0">
+        <div class="wrap">
+          <span class="lab">Contents</span>
+          <ul class="toc">
+            <li>
+              <a href="#/about"><span class="n">01</span><span class="h">About</span><span class="d">What we stand for, our promise and who we help</span><span class="ar">→</span></a>
+            </li>
+            <li>
+              <a href="#/method"><span class="n">02</span><span class="h">Method</span><span class="d">The CIESTA method and how an engagement runs</span><span class="ar">→</span></a>
+            </li>
+            <li>
+              <a href="#/services"><span class="n">03</span><span class="h">Services</span><span class="d">What we deliver and how your price is shaped</span><span class="ar">→</span></a>
+            </li>
+            <li>
+              <a href="#/insights"><span class="n">04</span><span class="h">Insights</span><span class="d">Practical writing for owners and operators</span><span class="ar">→</span></a>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
 
-<div class="page" id="p-method" data-title="Method | CIESTA.">
-<section class="blk"><div class="wrap">
-<h2 class="st">Method</h2>
-<p class="intro">A practical operating model built to turn strategy into execution.</p>
-</div></section>
-</div>
+    <div class="page" id="p-about" data-title="About | CIESTA.">
+      <section class="blk">
+        <div class="wrap">
+          <h2 class="st">About</h2>
+          <p class="intro">We help founders and operators create more clarity, momentum and strategic focus.</p>
+        </div>
+      </section>
+    </div>
 
-<div class="page" id="p-services" data-title="Services | CIESTA.">
-<section class="blk"><div class="wrap">
-<h2 class="st">Services</h2>
-<p class="intro">Fractional leadership, strategic advisory, and growth support for ambitious teams.</p>
-</div></section>
-</div>
+    <div class="page" id="p-method" data-title="Method | CIESTA.">
+      <section class="blk">
+        <div class="wrap">
+          <h2 class="st">Method</h2>
+          <p class="intro">A practical operating model built to turn strategy into execution.</p>
+        </div>
+      </section>
+    </div>
 
-<div class="page" id="p-insights" data-title="Insights | CIESTA.">
-<section class="blk"><div class="wrap">
-<h2 class="st">Insights</h2>
-<p class="intro">Reflective writing for leaders balancing growth, focus, and sustainability.</p>
-</div></section>
-</div>
+    <div class="page" id="p-services" data-title="Services | CIESTA.">
+      <section class="blk">
+        <div class="wrap">
+          <h2 class="st">Services</h2>
+          <p class="intro">Fractional leadership, strategic advisory, and growth support for ambitious teams.</p>
+        </div>
+      </section>
+    </div>
 
-<div class="page" id="p-contact" data-title="Contact | CIESTA.">
-<section class="blk"><div class="wrap">
-<h2 class="st">Contact</h2>
-<p class="intro">Let’s talk about what growth could look like for your next chapter.</p>
-</div></section>
-</div>
-</main>
+    <div class="page" id="p-insights" data-title="Insights | CIESTA.">
+      <section class="blk">
+        <div class="wrap">
+          <h2 class="st">Insights</h2>
+          <p class="intro">Reflective writing for leaders balancing growth, focus, and sustainability.</p>
+        </div>
+      </section>
+    </div>
 
-<button type="button" class="theme-toggle floating" id="theme-toggle" aria-label="Theme: Light" data-theme-mode="light">Light</button>
+    <div class="page" id="p-contact" data-title="Contact | CIESTA.">
+      <section class="blk">
+        <div class="wrap">
+          <h2 class="st">Contact</h2>
+          <p class="intro">Let’s talk about what growth could look like for your next chapter.</p>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <button type="button" class="theme-toggle floating" id="theme-toggle" aria-label="Theme: Light" data-theme-mode="light">Light</button>
 </body>
 </html>
