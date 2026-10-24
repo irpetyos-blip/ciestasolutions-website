@@ -1,36 +1,36 @@
 (function(){
   var routes={"":"home","about":"about","method":"method","services":"services","insights":"insights","contact":"contact"};
   var THEME_KEY="ciesta-theme";
-  var THEME_ORDER=["auto","light","dark"];
-  var pages = Array.prototype.slice.call(document.querySelectorAll(".page"));
-  var navLinks = Array.prototype.slice.call(document.querySelectorAll("nav a"));
+  var THEME_ORDER=["light","dark"];
+
+  function getSystemTheme(){
+    return window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light";
+  }
 
   function getSavedTheme(){
     try{
       var value=localStorage.getItem(THEME_KEY);
-      return value==="light"||value==="dark"||value==="auto"?value:"auto";
+      return value==="light"||value==="dark"?value:getSystemTheme();
     }catch(e){
-      return "auto";
+      return getSystemTheme();
     }
-  }
-
-  function getAutoTheme(date){
-    var hour=(date||new Date()).getHours();
-    return hour>=6&&hour<19?"light":"dark";
   }
 
   function applyTheme(mode, persist){
-    var theme = mode === "auto" ? getAutoTheme() : mode;
+    var theme = mode === "auto" ? getSystemTheme() : mode;
     document.documentElement.setAttribute("data-theme", theme);
     document.documentElement.style.colorScheme = theme === "dark" ? "dark" : "light";
+
     var button=document.getElementById("theme-toggle");
     if(button){
-      button.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-      button.setAttribute("data-theme-mode", mode);
-      button.setAttribute("aria-label", "Theme: " + mode + " — choose Auto, Light or Dark");
+      var label = theme === "dark" ? "Dark" : "Light";
+      button.textContent = label;
+      button.setAttribute("data-theme-mode", theme);
+      button.setAttribute("aria-label", "Theme: " + label);
     }
+
     if(persist){
-      try{localStorage.setItem(THEME_KEY, mode);}catch(e){}
+      try{localStorage.setItem(THEME_KEY, theme);}catch(e){}
     }
   }
 
@@ -46,41 +46,45 @@
     var id=Object.prototype.hasOwnProperty.call(routes,k)?routes[k]:"home";
     var targetId="p-"+id;
 
-    pages.forEach(function(p){
+    document.querySelectorAll(".page").forEach(function(p){
       p.classList.toggle("on", p.id === targetId);
     });
 
-    navLinks.forEach(function(a){
+    document.querySelectorAll("nav a").forEach(function(a){
       var href=a.getAttribute("href");
       if(href === "#/" + id){
         a.setAttribute("aria-current","page");
-      }else if(a.hasAttribute("aria-current")){
+      } else if(a.hasAttribute("aria-current")) {
         a.removeAttribute("aria-current");
       }
     });
 
     var el=document.getElementById(targetId);
     if(el&&el.dataset&&el.dataset.title) document.title=el.dataset.title;
-
-    if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      window.scrollTo(0,0);
-    } else {
-      window.scrollTo({top:0,left:0,behavior:"auto"});
-    }
+    window.scrollTo({top:0,left:0,behavior:"auto"});
   }
 
-  var button=document.getElementById("theme-toggle");
-  if(button) button.addEventListener("click", cycleTheme);
+  function init(){
+    var button=document.getElementById("theme-toggle");
+    if(button) button.addEventListener("click", cycleTheme);
 
-  applyTheme(getSavedTheme(), false);
-  show();
+    applyTheme(getSavedTheme(), false);
+    show();
 
-  window.addEventListener("hashchange", function(){
-    requestAnimationFrame(show);
-  });
+    window.addEventListener("hashchange", function(){
+      requestAnimationFrame(show);
+    });
 
-  var timer = window.setInterval(function(){
-    if(getSavedTheme()==="auto") applyTheme("auto", false);
-  },600000);
-  window.__ciestaThemeTimer = timer;
+    window.setInterval(function(){
+      if(getSavedTheme() === "dark" || getSavedTheme() === "light"){
+        applyTheme(getSavedTheme(), false);
+      }
+    },600000);
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", init, {once:true});
+  } else {
+    init();
+  }
 })();
