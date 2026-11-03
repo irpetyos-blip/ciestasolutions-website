@@ -33,6 +33,23 @@
     document.head.appendChild(style);
   }
 
+  function installLinkedInLink() {
+    var contact = document.querySelector('#p-contact .d');
+    if (!contact) return;
+
+    var line = Array.prototype.find.call(contact.children, function (item) {
+      return item.textContent.trim().indexOf('linkedin.com/company/') === 0;
+    });
+    if (!line || line.tagName.toLowerCase() === 'a') return;
+
+    var link = document.createElement('a');
+    link.href = 'https://www.linkedin.com/company/ciestasolutions';
+    link.target = '_blank';
+    link.rel = 'noopener';
+    link.textContent = line.textContent;
+    line.replaceWith(link);
+  }
+
   function show() {
     var pages = document.querySelectorAll('.page');
     var navLinks = document.querySelectorAll('nav a');
@@ -67,6 +84,7 @@
     // Always use dark mode, regardless of a saved preference or system setting.
     applyTheme(true);
     installContactLayout();
+    installLinkedInLink();
     show();
 
     window.addEventListener('hashchange', function () {
