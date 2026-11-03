@@ -23,10 +23,12 @@
     var style = document.createElement('style');
     style.id = 'contact-download-layout';
     style.textContent = [
-      '.next { display: flex; align-items: center; justify-content: space-between; gap: 24px; }',
+      '.crow { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 32px; }',
+      '.crow strong { margin-left: auto; text-align: right; }',
+      '.next { display: flex; align-items: center; justify-content: space-between; gap: 24px; margin-top: 48px; padding: 22px 18px; background: var(--pan); }',
       '.next > div:first-child { flex: 1 1 auto; }',
       '.next-links { display: flex; flex: 0 0 auto; justify-content: flex-end; align-items: center; gap: 12px; margin-left: auto; }',
-      '@media (max-width: 640px) { .next { align-items: flex-start; flex-direction: column; } .next-links { width: 100%; flex-wrap: wrap; justify-content: flex-end; } }'
+      '@media (max-width: 640px) { .crow { align-items: stretch; flex-direction: column; } .crow strong { align-self: flex-end; } .next { align-items: flex-start; flex-direction: column; } .next-links { width: 100%; flex-wrap: wrap; justify-content: flex-end; } }'
     ].join('\n');
     document.head.appendChild(style);
   }
