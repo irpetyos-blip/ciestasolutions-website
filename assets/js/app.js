@@ -1,27 +1,17 @@
 (function () {
   var routes = { '': 'home', about: 'about', method: 'method', services: 'services', insights: 'insights', contact: 'contact' };
   var THEME_KEY = 'ciesta-theme';
-  var THEME_ORDER = ['light', 'dark'];
 
-  function getSavedTheme() {
-    try {
-      var value = localStorage.getItem(THEME_KEY);
-      return value === 'light' || value === 'dark' ? value : 'light';
-    } catch (e) {
-      return 'light';
-    }
-  }
-
-  function applyTheme(mode, persist) {
-    var theme = mode === 'light' || mode === 'dark' ? mode : 'light';
+  function applyTheme(persist) {
+    var theme = 'dark';
     document.documentElement.setAttribute('data-theme', theme);
-    document.documentElement.style.colorScheme = theme === 'dark' ? 'dark' : 'light';
+    document.documentElement.style.colorScheme = theme;
 
     var button = document.getElementById('theme-toggle');
     if (button) {
-      button.textContent = theme === 'dark' ? 'Dark' : 'Light';
+      button.textContent = 'Dark';
       button.setAttribute('data-theme-mode', theme);
-      button.setAttribute('aria-label', 'Theme: ' + (theme === 'dark' ? 'Dark' : 'Light'));
+      button.setAttribute('aria-label', 'Theme: Dark');
     }
 
     if (persist) {
@@ -29,11 +19,16 @@
     }
   }
 
-  function cycleTheme() {
-    var current = getSavedTheme();
-    var index = THEME_ORDER.indexOf(current);
-    var next = THEME_ORDER[(index + 1) % THEME_ORDER.length];
-    applyTheme(next, true);
+  function installContactLayout() {
+    var style = document.createElement('style');
+    style.id = 'contact-download-layout';
+    style.textContent = [
+      '.next { display: flex; align-items: center; justify-content: space-between; gap: 24px; }',
+      '.next > div:first-child { flex: 1 1 auto; }',
+      '.next-links { display: flex; flex: 0 0 auto; justify-content: flex-end; align-items: center; gap: 12px; margin-left: auto; }',
+      '@media (max-width: 640px) { .next { align-items: flex-start; flex-direction: column; } .next-links { width: 100%; flex-wrap: wrap; justify-content: flex-end; } }'
+    ].join('\n');
+    document.head.appendChild(style);
   }
 
   function show() {
@@ -67,12 +62,9 @@
   }
 
   function init() {
-    var button = document.getElementById('theme-toggle');
-    if (button) {
-      button.addEventListener('click', cycleTheme);
-    }
-
-    applyTheme(getSavedTheme(), false);
+    // Always use dark mode, regardless of a saved preference or system setting.
+    applyTheme(true);
+    installContactLayout();
     show();
 
     window.addEventListener('hashchange', function () {
