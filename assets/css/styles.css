@@ -528,3 +528,120 @@ h2.st {
     font-size: clamp(42px, 10vw, 72px);
   }
 }
+
+/* Contact page only: maintain the site's white reference layout without
+   changing the dark theme or shared styles on any other route. */
+:root:has(#p-contact.on) {
+  --bg: #ffffff;
+  --ink: #111111;
+  --mut: #555555;
+  --pan: #f2f2f2;
+  --border: #111111;
+  --btn-text: #ffffff;
+  --btn-bg: #111111;
+  --btn-hover-text: #111111;
+  --btn-hover-bg: #ffffff;
+}
+
+:root:has(#p-contact.on) header {
+  background: #ffffff;
+  border-bottom: 1px solid #111111;
+}
+
+:root:has(#p-contact.on) header nav a { color: #555555; }
+:root:has(#p-contact.on) header nav a.btn { color: #ffffff; background: #111111; }
+:root:has(#p-contact.on) header nav a.btn:hover { color: #111111; background: #ffffff; }
+
+#p-contact .ct {
+  max-width: 1160px;
+  padding-right: 24px;
+  padding-left: 24px;
+}
+
+#p-contact .lab,
+#p-contact .d { color: #555555; }
+
+#p-contact .d {
+  gap: 10px;
+  margin-top: 20px;
+}
+
+#p-contact .d span { text-decoration: underline; }
+
+#p-contact .crow {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 32px;
+  margin: 36px 0 40px;
+}
+
+#p-contact .crow .btn,
+#p-contact .next-links .btn {
+  padding: 18px 32px;
+  color: #ffffff;
+  background: #111111;
+  border: 2px solid #111111;
+  border-radius: 0;
+}
+
+#p-contact .crow .btn:hover,
+#p-contact .next-links .btn:hover {
+  color: #111111;
+  background: #ffffff;
+}
+
+#p-contact .crow .btn:focus-visible,
+#p-contact .next-links .btn:focus-visible {
+  outline: 3px solid #111111;
+  outline-offset: 4px;
+}
+
+#p-contact .crow strong {
+  margin-left: auto;
+  color: #111111;
+  text-align: right;
+}
+
+#p-contact .next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin-top: 0;
+  padding: 28px 32px;
+  background: #f2f2f2;
+}
+
+#p-contact .next > div:first-child { flex: 1 1 auto; }
+
+#p-contact .next-links {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 16px;
+  margin-left: auto;
+}
+
+:root:has(#p-contact.on) footer {
+  padding: 36px 0;
+  color: #555555;
+  background: #ffffff;
+  border-top: 1px solid #111111;
+}
+
+@media (max-width: 640px) {
+  #p-contact .crow,
+  #p-contact .next {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  #p-contact .crow .btn,
+  #p-contact .next-links,
+  #p-contact .next-links .btn { width: 100%; }
+
+  #p-contact .crow strong { align-self: flex-end; }
+  #p-contact .next-links { flex-direction: column; }
+}
