@@ -40,14 +40,14 @@
     var line = Array.prototype.find.call(contact.children, function (item) {
       return item.textContent.trim().indexOf('linkedin.com/company/') === 0;
     });
-    if (!line || line.tagName.toLowerCase() === 'a') return;
+    if (!line) return;
 
-    var link = document.createElement('a');
+    var link = line.tagName.toLowerCase() === 'a' ? line : document.createElement('a');
     link.href = 'https://www.linkedin.com/company/ciestasolutions';
     link.target = '_blank';
     link.rel = 'noopener';
-    link.textContent = line.textContent;
-    line.replaceWith(link);
+    link.textContent = 'linkedin.com/company/ciestasolutions';
+    if (link !== line) line.replaceWith(link);
   }
 
   function show() {
